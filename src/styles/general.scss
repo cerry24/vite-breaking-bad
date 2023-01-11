@@ -9,3 +9,13 @@
 body {
     background-color: $main-color;
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 70%;
+    background-color: $secondary-color;
+    margin: 75px auto;
+    padding: 45px 25px 25px 45px;
+}

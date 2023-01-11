@@ -1,14 +1,20 @@
 <script>
-import { store } from '../store.js';
 import axios from 'axios';
+
+import { store } from '../store.js';
+import ElementCard from './ElementCard.vue';
 
 export default {
     name: 'AppMain',
 
+    components: {
+        ElementCard
+    },
+
     data() {
         return {
             store,
-            apiUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0'
+            apiUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0'
         }
     },
 
@@ -36,11 +42,11 @@ export default {
 </script>
 
 <template>
-    <div>
-
+    <div class="container">
+        <ElementCard v-for="cardEl in store.cardsList" :card="cardEl" />
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>
