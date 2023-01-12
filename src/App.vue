@@ -1,4 +1,7 @@
 <script>
+import axios from 'axios';
+import { store } from './store.js';
+
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 
@@ -6,6 +9,34 @@ export default {
   components: {
     AppHeader,
     AppMain
+  },
+
+  data() {
+    return {
+      store,
+      apiUrl: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=15&offset=0'
+    }
+  },
+
+  methods: {
+    getCards() {
+      axios.get(this.apiUrl, {
+        params: {
+
+        }
+      })
+        .then((response) => {
+          console.log(response.data.data);
+          this.store.cardsList = response.data.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+  },
+
+  created() {
+    this.getCards()
   }
 }
 </script>
@@ -22,4 +53,5 @@ export default {
 
 <style lang="scss">
 @use './styles/general.scss' as *;
+@use './styles/partials/variables' as *;
 </style>
