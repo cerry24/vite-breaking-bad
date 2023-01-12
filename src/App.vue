@@ -19,10 +19,10 @@ export default {
   },
 
   methods: {
-    getCards() {
+    getCards(archetypeName) {
       axios.get(this.apiUrl, {
         params: {
-
+          archetype: archetypeName
         }
       })
         .then((response) => {
@@ -43,7 +43,7 @@ export default {
 
 <template>
   <header>
-    <AppHeader />
+    <AppHeader @filter="getCards" />
   </header>
 
   <main>

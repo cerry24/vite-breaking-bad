@@ -1,6 +1,12 @@
 <script>
 export default {
-    name: 'AppHeader'
+    name: 'AppHeader',
+
+    data() {
+        return {
+            archetypeValue: ''
+        }
+    },
 }
 </script>
 
@@ -13,7 +19,8 @@ export default {
 
     <div class="filter">
         <label for="archetype-selector">Seleziona archetype</label>
-        <select name="archetype-selector" id="archetype-selector">
+        <select name="archetype-selector" id="archetype-selector" v-model.trim="archetypeValue"
+            @change="$emit('filter', archetypeValue)">
             <option value="Alien">Alien</option>
             <option value="Laval">Laval</option>
             <option value="Vylon">Vylon</option>
